@@ -1,10 +1,10 @@
 # [HABARI MOTO](https://our-news.herokuapp.com/)
-## Habari Moto is a web application meant to catch up hard workers on the current affairs
+## Habari Moto is a web application that is meant to catch up busy people on current affairs happening all over the world.
 ### September 10th, 2019
 #### By **[Firdausa Salat](https://github.com/firdausa7)**
 
 ## Description
-News Highlight is a web application that is meant to catch up hard workers on current affairs happening all over the world.
+Habari Moto is a web application that is meant to catch up busy people on current affairs happening all over the world.
 The website has the home page, that has a list of all sources of news sorted in categories.
 Click [here](https://habarrimoto.herokuapp.com) to see the live site
 
