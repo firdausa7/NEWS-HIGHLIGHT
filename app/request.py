@@ -92,7 +92,6 @@ def get_articles(source_id,limit):
 
     return articles_results
 
-
 def process_articles(articles_list):
     '''
     Function  that processes the new articles and transform them to a list of Objects
