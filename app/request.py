@@ -146,9 +146,9 @@ def get_habari(limit):
     Function that gets the json response to our url request
     '''
     get_habari_url = habari_url.format(limit,api_key)
-    print(get_everything_url)
+    print(get_habari_url)
 
-    with urllib.request.urlopen(get_everything_url) as url:
+    with urllib.request.urlopen(get_habari_url) as url:
         get_habari_data = url.read()
         get_habari_response = json.loads(get_habari_data)
 
