@@ -11,9 +11,9 @@ base_url = None
 #Getting the article base url
 article_url = None
 #Getting the topheadline articles
-headlines_url = None
+topheadline_url = None
 #Getting all articles
-habari_url = None
+everything_url = None
 #Search url
 search_url = None
 
@@ -22,9 +22,9 @@ def configure_request(app):
     global api_key,base_url,article_url,topheadline_url,everything_url,search_url
     api_key = app.config['NEWS_API_KEY']
     base_url = app.config["SOURCE_API_BASE_URL"]
-    article_url = app.config["HABARI_SOURCE_BASE_URL"]
-    headlines_url = app.config["HEADLINES_BASE_URL"]
-    habari_url =app.config["HABARI_BASE_URL"]
+    article_url = app.config["EVERYTHING_SOURCE_BASE_URL"]
+    topheadline_url = app.config["TOP_HEADLINES_BASE_URL"]
+    everything_url =app.config["EVERYTHING_BASE_URL"]
     search_url = app.config["SEARCH_API_BASE_URL"]
 
 
@@ -92,6 +92,7 @@ def get_articles(source_id,limit):
 
     return articles_results
 
+
 def process_articles(articles_list):
     '''
     Function  that processes the new articles and transform them to a list of Objects
@@ -120,44 +121,44 @@ def process_articles(articles_list):
     return articles_results
 
 
-def get_headlines(limit):
+def get_topheadlines(limit):
     '''
     Function that gets the json response to our url request
     '''
-    get_headlines_url = headline_url.format(limit,api_key)
-    print(get_headlines_url)
+    get_topheadlines_url = topheadline_url.format(limit,api_key)
+    print(get_topheadlines_url)
 
-    with urllib.request.urlopen(get_headlines_url) as url:
-        get_headlines_data = url.read()
-        get_headlines_response = json.loads(get_headlines_data)
+    with urllib.request.urlopen(get_topheadlines_url) as url:
+        get_topheadlines_data = url.read()
+        get_topheadlines_response = json.loads(get_topheadlines_data)
 
-        headlines_results = None
+        topheadlines_results = None
 
-        if get_headlines_response ['articles']:
-            headlines_results_list = get_headlines_response['articles']
-            headlines_results = process_articles(headlines_results_list)
+        if get_topheadlines_response ['articles']:
+            topheadlines_results_list = get_topheadlines_response['articles']
+            topheadlines_results = process_articles(topheadlines_results_list)
 
-    return headlines_results
+    return topheadlines_results
 
 
-def get_habari(limit):
+def get_everything(limit):
     '''
     Function that gets the json response to our url request
     '''
-    get_habari_url = habari_url.format(limit,api_key)
-    print(get_habari_url)
+    get_everything_url = everything_url.format(limit,api_key)
+    print(get_everything_url)
 
-    with urllib.request.urlopen(get_habari_url) as url:
-        get_habari_data = url.read()
-        get_habari_response = json.loads(get_habari_data)
+    with urllib.request.urlopen(get_everything_url) as url:
+        get_everything_data = url.read()
+        get_everything_response = json.loads(get_everything_data)
 
-        habari_results = None
+        everything_results = None
 
-        if get_habari_response['articles']:
-            habari_results_list = get_habari_response['articles']
-            habari_results = process_articles(habari_results_list)
+        if get_everything_response['articles']:
+            everything_results_list = get_everything_response['articles']
+            everything_results = process_articles(everything_results_list)
 
-    return habari_results
+    return everything_results
 
 
 def search_article(article_name):

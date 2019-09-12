@@ -7,10 +7,10 @@ class Config:
     General configuration parent class
     '''
     SOURCE_API_BASE_URL ='https://newsapi.org/v2/sources?language=en&category={}&apiKey={}'
-    HABARI_SOURCE_BASE_URL = 'https://newsapi.org/v2/habari?sources={}&pageSize={}&apiKey={}'
-    HEADLINES_BASE_URL = 'https://newsapi.org/v2/headlines?language=en&pageSize={}&apiKey={}'
-    HABARI_BASE_URL = 'https://newsapi.org/v2/habari?sources=bbc-news,al-jazeera-english,cnn,independent,google-news,the-telegraph,mashable,the-lad-bible,buzzfeed,bloomberg,engadget,espn,fortune&sortBy=publishedAt&pageSize={}&apiKey={}'
-    SEARCH_API_BASE_URL = 'https://newsapi.org/v2/habari?language=en&q={}&apiKey={}'
+    EVERYTHING_SOURCE_BASE_URL = 'https://newsapi.org/v2/everything?sources={}&pageSize={}&apiKey={}'
+    TOP_HEADLINES_BASE_URL = 'https://newsapi.org/v2/top-headlines?language=en&pageSize={}&apiKey={}'
+    EVERYTHING_BASE_URL = 'https://newsapi.org/v2/everything?sources=bbc-news,al-jazeera-english,cnn,independent,google-news,the-telegraph,mashable,the-lad-bible,buzzfeed,bloomberg,engadget,espn,fortune&sortBy=publishedAt&pageSize={}&apiKey={}'
+    SEARCH_API_BASE_URL = 'https://newsapi.org/v2/everything?language=en&q={}&apiKey={}'
     NEWS_API_KEY = os.environ.get('NEWS_API_KEY')
 
 

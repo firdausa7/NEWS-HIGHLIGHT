@@ -1,7 +1,7 @@
 from flask import render_template,request,redirect,url_for
 # from app import app
 from . import main
-from ..request import get_newsource,get_articles, get_headlines, get_habari, search_article
+from ..request import get_newsource,get_articles, get_topheadlines, get_everything, search_article
 
 
 # Views
@@ -43,36 +43,36 @@ def articles(source_id,per_page):
     else:
         return render_template('article.html', title=title, name = source_id, articles = article_source)
 
-@main.route('/headlines&<int:per_page>')
-def headlines(per_page):
+@main.route('/topheadlines&<int:per_page>')
+def topheadlines(per_page):
     '''
-    Function that returns  headline articles
+    Function that returns top headline articles
     '''
 
-    headlines_news = get_headlines(per_page)
+    topheadlines_news = get_topheadlines(per_page)
 
-    title = ' Headlines'
+    title = 'Top Headlines'
 
     search_article = request.args.get('article_query')
     if search_article:
         return redirect(url_for('.search',article_name=search_article))
     else:
-        return render_template('headlines.html', title=title, name = 'Headlines', articles = headlines_news)
+        return render_template('topheadlines.html', title=title, name = 'Top Headlines', articles = topheadlines_news)
 
-@main.route('/habari&<int:per_page>')
+@main.route('/everything&<int:per_page>')
 def all_news(per_page):
     '''
     Function used to return all news articles
     '''
 
-    habari_news = get_habari(per_page)
+    everything_news = get_everything(per_page)
 
     title = 'All News'
     search_article = request.args.get('article_query')
     if search_article:
         return redirect(url_for('.search',article_name=search_article))
     else:
-        return render_template('habari.html', title=title, name = 'All News', articles = habari_news)
+        return render_template('everything.html', title=title, name = 'All News', articles = everything_news)
 
 @main.route('/search/<article_name>')
 def search(article_name):
